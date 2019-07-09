@@ -55,13 +55,14 @@ class block_superframe extends block_base {
      */
     function init() {
         $this->title = get_string('pluginname', 'block_superframe');
+
     }
 
     /**
      * Add some text content to our block.
      */
     function get_content() {
-        global $USER;
+        global $USER, $CFG;
 
         // Do we have any content?
         if ($this->content !== null) {
@@ -78,9 +79,16 @@ class block_superframe extends block_base {
         $this->content->footer = '';
         $this->content->text = get_string('welcomeuser', 'block_superframe',
                 $USER);
+        $this->content->text .= '<br />' . get_string('message', 'block_superframe');
+        $this->content->text .= '<br /> <a href="' . $CFG->wwwroot . '/blocks/superframe/view.php">' .
+            get_string('viewlink', 'block_superframe') . '</a>';
 
         return $this->content;
     }
+
+
+
+
     /**
      * This is a list of places where the block may or
      * may not be added.
