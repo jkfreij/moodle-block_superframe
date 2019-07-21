@@ -37,6 +37,9 @@ $string['welcomeuser'] = 'Welcome {$a->firstname} {$a->lastname}';
 // Capability strings
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';
+$string['superframe:seeviewpage'] = 'View the link to the view page in the block';
+
+
 $string['message'] = ' I am a great developer';
 $string['viewlink'] = 'View Link';
 $string['url'] = 'iFrame URL';

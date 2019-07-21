@@ -27,6 +27,8 @@ $PAGE ->set_pagelayout($def_config->pagelayout);
 $PAGE->set_title(get_string('pluginname','block_superframe'));
 $PAGE->navbar->add(get_string('pluginname','block_superframe'));
 require_login();
+$usercontext = context_user::instance($USER->id);
+require_capability('block/superframe:seeviewpage', $usercontext);
 
 $configdata = $DB->get_field('block_instances', 'configdata', ['id' => $blockid]);
 
