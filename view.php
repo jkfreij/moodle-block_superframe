@@ -13,7 +13,6 @@
 require('../../config.php');
 
 
-
 //$config = get_config('block_superframe');
 $blockid = required_param('blockid',PARAM_INT);
 $def_config = get_config('block_superframe');
@@ -26,6 +25,7 @@ $PAGE ->set_pagelayout($def_config->pagelayout);
 //$PAGE->set_pagelayout(course);
 $PAGE->set_title(get_string('pluginname','block_superframe'));
 $PAGE->navbar->add(get_string('pluginname','block_superframe'));
+
 require_login();
 $usercontext = context_user::instance($USER->id);
 require_capability('block/superframe:seeviewpage', $usercontext);
@@ -68,14 +68,24 @@ switch ($config->size) {
 }
 
 
-echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('pluginname','block_superframe'),5);
+/*
+ * echo $OUTPUT->header();
+ * echo $OUTPUT->heading(get_string('pluginname','block_superframe'),5);
+*/
+$renderer= $PAGE->get_renderer('block_superframe');
+$renderer->display_view_page($url,$width,$height,fullname($USER));
+
 
 global $USER, $OUTPUT;
 $parameters = array('size' => 50);
-echo $OUTPUT->user_picture($USER, $parameters);
 
-echo '<br>' . fullname($USER) . '<br>';
+/*
+ * echo $OUTPUT->user_picture($USER, $parameters);
+ * echo '<br>' . fullname($USER) . '<br>';
+*/
+
+
+
 //echo 'This is a test view.php';
 
 // Build and display an iframe.
@@ -91,10 +101,12 @@ echo html_writer::end_tag('iframe');
 
 // Build and display an iframe.
 //$attributes = ['src' => $config->url,
-$attributes = ['src'=> $url,
-    'width' => $width,
-    'height' => $height];
-echo html_writer::start_tag('iframe', $attributes);
-echo html_writer::end_tag('iframe');
-
-echo $OUTPUT->footer();
+/*
+ *  $attributes = ['src'=> $url,
+ *  'width' => $width,
+ *  'height' => $height];
+ * echo html_writer::start_tag('iframe', $attributes);
+ * echo html_writer::end_tag('iframe');
+ *
+ * echo $OUTPUT->footer();
+*/
